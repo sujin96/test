@@ -3,17 +3,19 @@ package main
 import "fmt"
 
 func main() {
-	a := 1
-	b := 2
-	fmt.Println("호출전")
-	fmt.Printf("a = %p, b = %p\n", &a, &b)
-	swap(&a, &b)
-	fmt.Println("호출후")
-	fmt.Printf("a = %d, b = %d\n", a, b)
+	var names [3]string = [3]string{"김춘삼", "이순신", "홍길동"}
+
+	for index, name := range names {
+		fmt.Println(index, name)
+	}
+	몫, 성공여부 := Divide(3, 1)
+	fmt.Println(몫, 성공여부)
 }
-func swap(i *int, j *int) {
-	temp := *i
-	*i = *j
-	*j = temp
-	fmt.Printf("i = %d, j = %d\n", *i, *j)
+func Divide(a, b int) (int, bool) {
+	// 젯수가 0이면 나눌 수 없음
+	if b == 0 {
+		return 0, false
+	}
+	// 나누기 가능
+	return a / b, true
 }
